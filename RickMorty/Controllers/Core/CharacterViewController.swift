@@ -12,6 +12,9 @@ final class CharacterViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     setAppearance()
+    
+    let request = RMRequest(endpoint: .character,path: ["1"], queryParams: [URLQueryItem(name: "name", value: "rick"), URLQueryItem(name: "status", value: "alive")])
+    print(request.url)
   }
   
   //MARK: - Private

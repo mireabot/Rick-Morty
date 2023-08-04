@@ -13,7 +13,9 @@ final class RMService {
   
   private init () {}
   
-  public func exacuteRequest(_ request: RMRequest, completion: @escaping () -> Void) {
+  public func exacuteRequest<T: Codable>(_ request: RMRequest,
+                                         expecting type: T.Type,
+                                         completion: @escaping (Result<T, Error>) -> Void) {
     
   }
 }
