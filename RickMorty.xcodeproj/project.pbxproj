@@ -27,6 +27,8 @@
 		35496D792A7DB17300194761 /* CharacterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35496D782A7DB17300194761 /* CharacterListView.swift */; };
 		35496D7C2A7DB1E000194761 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 35496D7B2A7DB1E000194761 /* SnapKit */; };
 		35496D7E2A7DB6AA00194761 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35496D7D2A7DB6AA00194761 /* Extensions.swift */; };
+		35496D802A7DBBAA00194761 /* CharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35496D7F2A7DBBAA00194761 /* CharacterCollectionViewCell.swift */; };
+		35496D822A7DBC8A00194761 /* CharacterCollectionViewCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35496D812A7DBC8A00194761 /* CharacterCollectionViewCellVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +53,8 @@
 		35496D762A7DB0E400194761 /* CharacterListViewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewVM.swift; sourceTree = "<group>"; };
 		35496D782A7DB17300194761 /* CharacterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListView.swift; sourceTree = "<group>"; };
 		35496D7D2A7DB6AA00194761 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		35496D7F2A7DBBAA00194761 /* CharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewCell.swift; sourceTree = "<group>"; };
+		35496D812A7DBC8A00194761 /* CharacterCollectionViewCellVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewCellVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				35496D782A7DB17300194761 /* CharacterListView.swift */,
+				35496D7F2A7DBBAA00194761 /* CharacterCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -129,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				35496D762A7DB0E400194761 /* CharacterListViewVM.swift */,
+				35496D812A7DBC8A00194761 /* CharacterCollectionViewCellVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -257,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				35496D632A7D4E1400194761 /* RMEpisode.swift in Sources */,
+				35496D822A7DBC8A00194761 /* CharacterCollectionViewCellVM.swift in Sources */,
 				35496D6A2A7D4ECA00194761 /* EposidesViewController.swift in Sources */,
 				35496D482A7D4C1D00194761 /* TabViewController.swift in Sources */,
 				35496D6C2A7D4ED200194761 /* SettingsViewController.swift in Sources */,
@@ -268,6 +275,7 @@
 				35496D6E2A7D597F00194761 /* RMService.swift in Sources */,
 				35496D772A7DB0E400194761 /* CharacterListViewVM.swift in Sources */,
 				35496D462A7D4C1D00194761 /* SceneDelegate.swift in Sources */,
+				35496D802A7DBBAA00194761 /* CharacterCollectionViewCell.swift in Sources */,
 				35496D722A7D5A1C00194761 /* RMEndpoint.swift in Sources */,
 				35496D5F2A7D4DFE00194761 /* RMLocation.swift in Sources */,
 				35496D7E2A7DB6AA00194761 /* Extensions.swift in Sources */,

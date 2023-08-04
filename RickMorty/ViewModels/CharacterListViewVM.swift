@@ -25,9 +25,11 @@ extension CharacterListViewVM: UICollectionViewDataSource, UICollectionViewDeleg
     return 20
   }
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-    cell.backgroundColor = .systemRed
-    
+    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterCollectionViewCell.cellID, for: indexPath) as? CharacterCollectionViewCell else {
+      fatalError("Unsupported cell")
+    }
+    let viewModel = CharacterCollectionViewCellVM(characterName: "Michael", characterStatus: .alive, characterImageUrl: URL(string: "https://rickandmortyapi.com/api/character/avatar/1.jpeg"))
+    cell.configureVM(with: viewModel)
     return cell
   }
   

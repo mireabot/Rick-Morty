@@ -26,8 +26,8 @@ final class CharacterListView: UIView {
     collection.isHidden = true
     collection.alpha = 0
     collection.register(
-      UICollectionViewCell.self,
-      forCellWithReuseIdentifier: "cell")
+      CharacterCollectionViewCell.self,
+      forCellWithReuseIdentifier: CharacterCollectionViewCell.cellID)
     
     return collection
   }()
