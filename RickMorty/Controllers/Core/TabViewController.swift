@@ -33,7 +33,7 @@ final class TabViewController: UITabBarController {
     let nav4 = UINavigationController(rootViewController: settingsVC)
     
     nav1.tabBarItem = UITabBarItem(title: "Characters",
-                                   image: UIImage(systemName: "person.3"),
+                                   image: UIImage(systemName: "person.2"),
                                    tag: 1)
     
     nav2.tabBarItem = UITabBarItem(title: "Locations",
