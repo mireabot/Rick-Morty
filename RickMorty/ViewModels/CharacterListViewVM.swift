@@ -9,7 +9,8 @@ import UIKit
 
 protocol CharacterListViewVMDelegate: AnyObject {
   func didLoadCharacters()
-  func didSelectCharacter(character: RMCharacter)
+  func didLoadMoreCharacters(with indexes: [IndexPath])
+  func didSelectCharacter(_ character: RMCharacter)
 }
 
 final class CharacterListViewVM: NSObject {
@@ -22,7 +23,9 @@ final class CharacterListViewVM: NSObject {
     didSet {
       for character in characters {
         let vm = CharacterCollectionViewCellVM(characterName: character.name, characterStatus: character.status, characterImageUrl: URL(string: character.image))
-        cellViewModels.append(vm)
+        if !cellViewModels.contains(vm) {
+          cellViewModels.append(vm)
+        }
       }
     }
   }
@@ -48,8 +51,48 @@ final class CharacterListViewVM: NSObject {
     }
   }
   
-  public func fetchNewCharacters() {
+  /// Paginate if additional characters are needed
+  public func fetchAdditionalCharacters(url: URL) {
+    guard !isLoadingMore else {
+      return
+    }
+    isLoadingMore = true
+    guard let request = RMRequest(url: url) else {
+      isLoadingMore = false
+      return
+    }
     
+    RMService.shared.exacuteRequest(request, expecting: RMCharacterResponse.self) { [weak self] result in
+      guard let strongSelf = self else {
+        return
+      }
+      switch result {
+      case .success(let responseModel):
+        let moreResults = responseModel.results
+        let info = responseModel.info
+        strongSelf.apiInfo = info
+        
+        let originalCount = strongSelf.characters.count
+        let newCount = moreResults.count
+        let total = originalCount+newCount
+        let startingIndex = total - newCount
+        let indexPathsToAdd: [IndexPath] = Array(startingIndex..<(startingIndex+newCount)).compactMap({
+          return IndexPath(row: $0, section: 0)
+        })
+        strongSelf.characters.append(contentsOf: moreResults)
+        
+        DispatchQueue.main.async {
+          strongSelf.delegate?.didLoadMoreCharacters(
+            with: indexPathsToAdd
+          )
+          
+          strongSelf.isLoadingMore = false
+        }
+      case .failure(let failure):
+        print(String(describing: failure))
+        self?.isLoadingMore = false
+      }
+    }
   }
   
   public var shouldShowLoadMore: Bool {
@@ -97,21 +140,30 @@ extension CharacterListViewVM: UICollectionViewDataSource, UICollectionViewDeleg
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     collectionView.deselectItem(at: indexPath, animated: true)
     let character = characters[indexPath.row]
-    delegate?.didSelectCharacter(character: character)
+    delegate?.didSelectCharacter(character)
   }
 }
 
 extension CharacterListViewVM: UIScrollViewDelegate {
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    guard shouldShowLoadMore, !isLoadingMore else {
+    guard
+      shouldShowLoadMore,
+      !isLoadingMore,
+      !cellViewModels.isEmpty,
+      let nextURL = apiInfo?.next,
+      let url = URL(string: nextURL)
+    else {
       return
     }
-    let offset = scrollView.contentOffset.y
-    let totalH = scrollView.contentSize.height
-    let scrollFrameH = scrollView.frame.size.height
-    
-    if offset >= (totalH - scrollFrameH - 120) {
-      isLoadingMore = true
+    Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false) { [weak self] t in
+      let offset = scrollView.contentOffset.y
+      let totalH = scrollView.contentSize.height
+      let scrollFrameH = scrollView.frame.size.height
+      
+      if offset >= (totalH - scrollFrameH - 120) {
+        self?.fetchAdditionalCharacters(url: url)
+      }
+      t.invalidate()
     }
   }
 }
