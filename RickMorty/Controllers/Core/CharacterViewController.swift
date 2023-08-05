@@ -20,6 +20,7 @@ final class CharacterViewController: UIViewController {
   //MARK: - Private
   
   func addViews() {
+    characterListView.delegate = self
     view.addSubview(characterListView)
     characterListView.snp.makeConstraints { make in
       make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
@@ -33,5 +34,14 @@ final class CharacterViewController: UIViewController {
   func setAppearance() {
     view.backgroundColor = .systemBackground
     title = "Characters"
+  }
+}
+
+extension CharacterViewController: CharacterListViewDelegate {
+  func characterListView(_ characterList: CharacterListView, didSelect character: RMCharacter) {
+    let vm = CharacterDetailViewVM(character: character)
+    let detailVC = CharacterDetailViewController(vm: vm)
+    detailVC.navigationItem.largeTitleDisplayMode = .never
+    navigationController?.pushViewController(detailVC, animated: true)
   }
 }

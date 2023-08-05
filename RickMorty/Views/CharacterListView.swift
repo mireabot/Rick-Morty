@@ -8,8 +8,14 @@
 import UIKit
 import SnapKit
 
+protocol CharacterListViewDelegate: AnyObject {
+  func characterListView(_ characterList: CharacterListView, didSelect character: RMCharacter)
+}
+
 /// View which shows list of characters and loader
 final class CharacterListView: UIView {
+  
+  public weak var delegate: CharacterListViewDelegate?
   
   private let viewModel = CharacterListViewVM()
   
@@ -28,6 +34,7 @@ final class CharacterListView: UIView {
     collection.register(
       CharacterCollectionViewCell.self,
       forCellWithReuseIdentifier: CharacterCollectionViewCell.cellID)
+    collection.register(RMFooterCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: RMFooterCollectionReusableView.id)
     
     return collection
   }()
@@ -59,7 +66,7 @@ final class CharacterListView: UIView {
     collectionView.snp.makeConstraints { make in
       make.top.equalToSuperview()
       make.bottom.equalToSuperview()
-      make.leading.equalToSuperview().offset(10)
+      make.leading.bottom.equalToSuperview().offset(10)
       make.trailing.equalToSuperview().offset(-10)
     }
   }
@@ -71,6 +78,10 @@ final class CharacterListView: UIView {
 }
 
 extension CharacterListView: CharacterListViewVMDelegate {
+  func didSelectCharacter(character: RMCharacter) {
+    delegate?.characterListView(self, didSelect: character)
+  }
+  
   func didLoadCharacters() {
     spinner.stopAnimating()
     collectionView.isHidden = false
