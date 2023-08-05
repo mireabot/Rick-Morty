@@ -14,7 +14,9 @@ final class CharacterCollectionViewCell: UICollectionViewCell {
   
   private let imageView: UIImageView = {
     let iv = UIImageView()
-    iv.contentMode = .scaleAspectFit
+    iv.contentMode = .scaleAspectFill
+    iv.clipsToBounds = true
+    iv.layer.cornerRadius = 10
     
     return iv
   }()
@@ -39,6 +41,7 @@ final class CharacterCollectionViewCell: UICollectionViewCell {
   override init(frame: CGRect) {
     super.init(frame: frame)
     contentView.backgroundColor = .secondarySystemBackground
+    contentView.layer.cornerRadius = 10
     createUI()
   }
   
@@ -63,15 +66,15 @@ final class CharacterCollectionViewCell: UICollectionViewCell {
     }
     
     nameLabel.snp.makeConstraints { make in
-      make.height.equalTo(40)
-      make.left.equalToSuperview().offset(5)
+      make.height.equalTo(35)
+      make.left.equalToSuperview().offset(7)
       make.right.equalToSuperview().offset(-5)
       make.bottom.equalTo(statusLabel.snp.top).offset(-3)
     }
     
     statusLabel.snp.makeConstraints { make in
       make.height.equalTo(35)
-      make.left.equalToSuperview().offset(5)
+      make.left.equalToSuperview().offset(7)
       make.right.equalToSuperview().offset(-5)
       make.bottom.equalToSuperview().offset(-3)
     }

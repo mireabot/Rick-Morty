@@ -37,6 +37,7 @@ final class CharacterListView: UIView {
     super.init(frame: frame)
     createUI()
     spinner.startAnimating()
+    viewModel.delegate = self
     viewModel.fetchCharacters()
     setCollection()
   }
@@ -66,15 +67,16 @@ final class CharacterListView: UIView {
   private func setCollection() {
     collectionView.dataSource = viewModel
     collectionView.delegate = viewModel
-    
-    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-      self.spinner.stopAnimating()
-      
-      self.collectionView.isHidden = false
-      
-      UIView.animate(withDuration: 0.4) {
-        self.collectionView.alpha = 1
-      }
+  }
+}
+
+extension CharacterListView: CharacterListViewVMDelegate {
+  func didLoadCharacters() {
+    spinner.stopAnimating()
+    collectionView.isHidden = false
+    collectionView.reloadData()
+    UIView.animate(withDuration: 0.4) {
+      self.collectionView.alpha = 1
     }
   }
 }
