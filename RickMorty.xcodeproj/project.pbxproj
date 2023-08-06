@@ -87,6 +87,38 @@
 			path = Other;
 			sourceTree = "<group>";
 		};
+		3513CD402A7F172B001182A0 /* DetailsView */ = {
+			isa = PBXGroup;
+			children = (
+				3513CD382A7ECF43001182A0 /* CharacterDetailView.swift */,
+			);
+			path = DetailsView;
+			sourceTree = "<group>";
+		};
+		3513CD412A7F1734001182A0 /* CharactersView */ = {
+			isa = PBXGroup;
+			children = (
+				35496D782A7DB17300194761 /* CharacterListView.swift */,
+			);
+			path = CharactersView;
+			sourceTree = "<group>";
+		};
+		3513CD422A7F1743001182A0 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				35496D7F2A7DBBAA00194761 /* CharacterCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		3513CD432A7F1750001182A0 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				3513CD3C2A7ED48C001182A0 /* RMFooterCollectionReusableView.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
 		35496D372A7D4C1D00194761 = {
 			isa = PBXGroup;
 			children = (
@@ -143,10 +175,10 @@
 		35496D592A7D4D7500194761 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				35496D782A7DB17300194761 /* CharacterListView.swift */,
-				35496D7F2A7DBBAA00194761 /* CharacterCollectionViewCell.swift */,
-				3513CD382A7ECF43001182A0 /* CharacterDetailView.swift */,
-				3513CD3C2A7ED48C001182A0 /* RMFooterCollectionReusableView.swift */,
+				3513CD432A7F1750001182A0 /* Other */,
+				3513CD422A7F1743001182A0 /* Cells */,
+				3513CD412A7F1734001182A0 /* CharactersView */,
+				3513CD402A7F172B001182A0 /* DetailsView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
