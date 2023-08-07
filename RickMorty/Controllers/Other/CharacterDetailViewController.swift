@@ -65,18 +65,41 @@ extension CharacterDetailViewController: UICollectionViewDelegate, UICollectionV
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 10
+    let sectionType = viewModel.sections[section]
+    switch sectionType {
+    case .image:
+      return 1
+    case .information(let viewModels):
+      return viewModels.count
+    case .episodes(let viewModels):
+      return viewModels.count
+    }
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-    switch indexPath.section {
-    case 0: cell.backgroundColor = .systemRed
-    case 1: cell.backgroundColor = .systemCyan
-    case 2: cell.backgroundColor = .systemGray
-    default:
-      cell.backgroundColor = .systemBackground
+    let sectionType = viewModel.sections[indexPath.section]
+    switch sectionType {
+    case .image(let viewModel):
+      guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterImageCollectionViewCell.cellID, for: indexPath) as? CharacterImageCollectionViewCell else {
+        fatalError()
+      }
+      cell.configure(with: viewModel)
+      cell.backgroundColor = .systemRed
+      return cell
+    case .information(let viewModels):
+      guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterInfoCollectionViewCell.cellID, for: indexPath) as? CharacterInfoCollectionViewCell else {
+        fatalError()
+      }
+      cell.configure(with: viewModels[indexPath.row])
+      cell.backgroundColor = .systemBlue
+      return cell
+    case .episodes(let viewModels):
+      guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterEpisodesCollectionViewCell.cellID, for: indexPath) as? CharacterEpisodesCollectionViewCell else {
+        fatalError()
+      }
+      cell.configure(with: viewModels[indexPath.row])
+      cell.backgroundColor = .systemCyan
+      return cell
     }
-    return cell
   }
 }
