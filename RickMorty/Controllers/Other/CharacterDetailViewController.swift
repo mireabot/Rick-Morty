@@ -84,21 +84,21 @@ extension CharacterDetailViewController: UICollectionViewDelegate, UICollectionV
         fatalError()
       }
       cell.configure(with: viewModel)
-      cell.backgroundColor = .systemRed
+      
       return cell
     case .information(let viewModels):
       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterInfoCollectionViewCell.cellID, for: indexPath) as? CharacterInfoCollectionViewCell else {
         fatalError()
       }
       cell.configure(with: viewModels[indexPath.row])
-      cell.backgroundColor = .systemBlue
+      
       return cell
     case .episodes(let viewModels):
       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterEpisodesCollectionViewCell.cellID, for: indexPath) as? CharacterEpisodesCollectionViewCell else {
         fatalError()
       }
       cell.configure(with: viewModels[indexPath.row])
-      cell.backgroundColor = .systemCyan
+      
       return cell
     }
   }

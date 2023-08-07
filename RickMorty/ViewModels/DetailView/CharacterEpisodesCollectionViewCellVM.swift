@@ -8,5 +8,9 @@
 import Foundation
 
 final class CharacterEpisodesCollectionViewCellVM {
-  init() {}
+  let episodeURL: URL?
+  
+  init(episodeURL: URL?) {
+    self.episodeURL = episodeURL
+  }
 }
