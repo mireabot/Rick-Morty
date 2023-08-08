@@ -14,8 +14,9 @@ final class CharacterInfoCollectionViewCell: UICollectionViewCell {
   private let valueLabel: UILabel = {
     let label = UILabel()
     label.text = "Earth"
+    label.numberOfLines = 0
     label.textAlignment = .center
-    label.font = .systemFont(ofSize: 18, weight: .regular)
+    label.font = .systemFont(ofSize: 20, weight: .regular)
     
     return label
   }()
@@ -33,6 +34,7 @@ final class CharacterInfoCollectionViewCell: UICollectionViewCell {
     let iv = UIImageView()
     iv.contentMode = .scaleAspectFit
     iv.image = UIImage(systemName: "globe.americas")
+    iv.tintColor = .systemGreen
     
     return iv
   }()
@@ -62,7 +64,7 @@ final class CharacterInfoCollectionViewCell: UICollectionViewCell {
     
     titleContainerView.snp.makeConstraints { make in
       make.leading.trailing.bottom.equalToSuperview()
-      make.height.equalToSuperview().multipliedBy(0.33)
+      make.height.equalToSuperview().multipliedBy(0.25)
     }
     
     titleLabel.snp.makeConstraints { make in
@@ -71,7 +73,8 @@ final class CharacterInfoCollectionViewCell: UICollectionViewCell {
     
     valueLabel.snp.makeConstraints { make in
       make.left.right.equalToSuperview()
-      make.top.equalTo(iconimageView.snp.bottom).offset(5)
+      make.top.equalTo(iconimageView.snp.bottom)
+      make.bottom.equalTo(titleContainerView.snp.top)
     }
     
     iconimageView.snp.makeConstraints { make in
@@ -83,12 +86,14 @@ final class CharacterInfoCollectionViewCell: UICollectionViewCell {
   
   override func prepareForReuse() {
     super.prepareForReuse()
-    //valueLabel.text = nil
-    //titleLabel.text = nil
-    //IconimageView.image = nil
+    valueLabel.text = nil
+    titleLabel.text = nil
+    iconimageView.image = nil
   }
   
   public func configure(with vm: CharacterInfoCollectionViewCellVM) {
-    
+    titleLabel.text = vm.title
+    valueLabel.text = vm.displayTitle
+    iconimageView.image = vm.iconImage
   }
 }

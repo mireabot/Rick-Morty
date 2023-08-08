@@ -15,6 +15,7 @@ final class CharacterImageCollectionViewCell: UICollectionViewCell {
     let iv = UIImageView()
     iv.contentMode = .scaleAspectFill
     iv.clipsToBounds = true
+    iv.layer.cornerRadius = 8
     
     return iv
   }()
