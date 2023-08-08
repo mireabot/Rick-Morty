@@ -40,6 +40,7 @@
 		35496D7E2A7DB6AA00194761 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35496D7D2A7DB6AA00194761 /* Extensions.swift */; };
 		35496D802A7DBBAA00194761 /* CharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35496D7F2A7DBBAA00194761 /* CharacterCollectionViewCell.swift */; };
 		35496D822A7DBC8A00194761 /* CharacterCollectionViewCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35496D812A7DBC8A00194761 /* CharacterCollectionViewCellVM.swift */; };
+		35D74B7C2A8303370019594E /* EpisodeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D74B7B2A8303370019594E /* EpisodeDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +78,7 @@
 		35496D7D2A7DB6AA00194761 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		35496D7F2A7DBBAA00194761 /* CharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewCell.swift; sourceTree = "<group>"; };
 		35496D812A7DBC8A00194761 /* CharacterCollectionViewCellVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewCellVM.swift; sourceTree = "<group>"; };
+		35D74B7B2A8303370019594E /* EpisodeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				3513CD362A7EC660001182A0 /* CharacterDetailViewController.swift */,
+				35D74B7B2A8303370019594E /* EpisodeDetailViewController.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 				3513CD372A7EC660001182A0 /* CharacterDetailViewController.swift in Sources */,
 				3513CD3B2A7ECF58001182A0 /* CharacterDetailViewVM.swift in Sources */,
 				35496D662A7D4EAF00194761 /* CharacterViewController.swift in Sources */,
+				35D74B7C2A8303370019594E /* EpisodeDetailViewController.swift in Sources */,
 				351648472A815D6300E5515A /* CharacterImageCollectionViewCell.swift in Sources */,
 				35496D742A7DAF6E00194761 /* RMCharacterResponse.swift in Sources */,
 				35496D792A7DB17300194761 /* CharacterListView.swift in Sources */,

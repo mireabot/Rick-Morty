@@ -10,6 +10,10 @@ import UIKit
 final class CharacterDetailViewVM {
   private let character: RMCharacter
   
+  public var episodes: [String] {
+    character.episode
+  }
+  
   enum SectionTypes {
     case image(viewModel: CharacterImageCollectionViewCellVM)
     case information(viewModels: [CharacterInfoCollectionViewCellVM])
