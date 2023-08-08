@@ -16,7 +16,7 @@ final class CharacterCollectionViewCell: UICollectionViewCell {
     let iv = UIImageView()
     iv.contentMode = .scaleAspectFill
     iv.clipsToBounds = true
-    iv.layer.cornerRadius = 10
+    iv.roundCorners(corners: [.topLeft, .topRight], radius: 10)
     
     return iv
   }()
