@@ -20,7 +20,7 @@ class EpisodeDetailViewVM {
       return
     }
     
-    RMService.shared.exacuteRequest(request, expecting: RMEpisode.self) { result in
+    RMService.shared.executeRequest(request, expecting: RMEpisode.self) { result in
       switch result {
       case .success(let model):
         print(String(describing: model))

@@ -20,7 +20,7 @@ final class RMService {
     case failedToGetData
   }
   
-  public func exacuteRequest<T: Codable>(_ request: RMRequest,
+  public func executeRequest<T: Codable>(_ request: RMRequest,
                                          expecting type: T.Type,
                                          completion: @escaping (Result<T, Error>) -> Void
   ) {

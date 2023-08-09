@@ -13,7 +13,8 @@ protocol EpisodeDataRender {
   var air_date: String { get }
 }
 
-final class CharacterEpisodesCollectionViewCellVM {
+final class CharacterEpisodesCollectionViewCellVM: Hashable, Equatable {
+ 
   let episodeURL: URL?
   
   private var isFetching = false
@@ -52,7 +53,7 @@ final class CharacterEpisodesCollectionViewCellVM {
     
     isFetching = true
     
-    RMService.shared.exacuteRequest(request, expecting: RMEpisode.self) { [weak self] result in
+    RMService.shared.executeRequest(request, expecting: RMEpisode.self) { [weak self] result in
       switch result {
       case .success(let model):
         DispatchQueue.main.async {
@@ -63,4 +64,12 @@ final class CharacterEpisodesCollectionViewCellVM {
       }
     }
   }
+  
+  func hash(into hasher: inout Hasher) {
+    hasher.combine(self.episodeURL?.absoluteString)
+  }
+  static func == (lhs: CharacterEpisodesCollectionViewCellVM, rhs: CharacterEpisodesCollectionViewCellVM) -> Bool {
+    return lhs.hashValue == rhs.hashValue
+  }
+  
 }

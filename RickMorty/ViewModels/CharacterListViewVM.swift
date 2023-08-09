@@ -35,7 +35,7 @@ final class CharacterListViewVM: NSObject {
   private var apiInfo: RMCharacterResponse.RMCharacterResponseInfo? = nil
   
   public func fetchCharacters() {
-    RMService.shared.exacuteRequest(.listOfCharacters, expecting: RMCharacterResponse.self) { [weak self] result in
+    RMService.shared.executeRequest(.listOfCharacters, expecting: RMCharacterResponse.self) { [weak self] result in
       switch result {
       case .success(let model):
         let results = model.results
@@ -62,7 +62,7 @@ final class CharacterListViewVM: NSObject {
       return
     }
     
-    RMService.shared.exacuteRequest(request, expecting: RMCharacterResponse.self) { [weak self] result in
+    RMService.shared.executeRequest(request, expecting: RMCharacterResponse.self) { [weak self] result in
       guard let strongSelf = self else {
         return
       }
