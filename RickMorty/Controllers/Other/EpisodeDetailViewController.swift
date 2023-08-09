@@ -9,10 +9,10 @@ import UIKit
 
 final class EpisodeDetailViewController: UIViewController {
   
-  private let url: URL?
+  private let viewModel: EpisodeDetailViewVM
   
   init(url: URL?) {
-    self.url = url
+    self.viewModel = .init(endpointUrl: url)
     super.init(nibName: nil, bundle: nil)
   }
   
